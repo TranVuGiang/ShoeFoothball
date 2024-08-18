@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoeapp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TRANH CHỦ TINISPORTS</title>
+    <link
+      rel="stylesheet"
+      href="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="bootstrap-icons-1.11.2/font/bootstrap-icons.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <style>
+      #header-container {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: transparent; /* Màu nền ban đầu của header */
+        transition: background-color 0.3s;
+      }
+
+      #mainNav {
+        background-color: transparent !important; /* Background trong suốt cho navbar */
+      }
+
+      #mainNav.scrolled {
+        background-color: #000 !important; /* Màu đậm hơn bạn muốn */
+      }
+    </style>
+  </head>
+
+  <body ng-controller="mainController">
+    <div class="container-fluid">
+      <!-- Header -->
+
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-fixed">
+          <div class="container-fluid">
+            <a href="index.html" class="navbar-brand font-logo">TINISPORT</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <form class="d-flex mx-auto" role="search">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button class="btn btn-outline-success" type="submit">
+                  Search
+                </button>
+              </form>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                  >
+                    <i class="bi bi-house-fill"></i> Trang chủ</a
+                  >
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Giày đá bóng
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="list-data-1.html"
+                        >Đế sân cỏ nhân tạo</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Đế sân cỏ thật</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="#">NIKE</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Phụ kiện đá bóng
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">
+                    <i class="bi bi-newspaper"></i> Tin tức</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="dangnhap.html"
+                  >
+                    <i class="bi bi-person-fill"></i> Tài khoản</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="giohang.html"
+                  >
+                    <i class="bi bi-cart-fill"></i> Giỏ hàng</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <script>
+        $(document).ready(function () {
+          var navbar = $(".navbar-fixed");
+
+          $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll > 50) {
+              navbar.addClass("scrolled");
+            } else {
+              navbar.removeClass("scrolled");
+            }
+          });
+        });
+      </script>
+      <div
+        id="carouselExampleCaptions"
+        class="carousel slide"
+        data-bs-ride="carousel"
+        data-bs-interval="2500"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="img/background-header.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <a href="#">
+                <h1>PUMA</h1>
+                <h4>Tốc độ sánh ngang với những chú báo</h4>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="img/background-header2.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <a href="#">
+                <h1>NIKE</h1>
+                <h4>Nhẹ nhàng với những cú ghi bàn đầy hiểm hóc</h4>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="img/background-header3.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <a href="#">
+                <h1>ADIDAS</h1>
+                <h4>Biểu tượng của quyền lực và sự kiểm soát toàn diện</h4></a
+              >
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="img/background-header4.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <a href="#">
+                <h1>MIZUNO</h1>
+                <h4>
+                  Sự đơn giản và thoải mái khi chơi bóng cho các bàn chân bè
+                </h4></a
+              >
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <section class="container-fluid alert-dark phukien-aodau">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-3">
+              <a href="">
+                <img src="img/all-ao.webp" class="image-wrapper" />
+              </a>
+            </div>
+            <div class="col-sm-6 text-center">
+              <a href="">
+                <img src="img/shop-phukien.webp" class="image-wrapper" />
+              </a>
+            </div>
+            <div class="col-sm-3">
+              <a href="">
+                <img src="img/all-phukien.png" class="image-wrapper" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container-fluid alert-dark home-collections">
+        <h2 class="section-title text-center">SIÊU MỚI - SIÊU HOT</h2>
+        <div class="container text-center">
+          <ul
+            class="nav nav-pills mb-3 tab justify-content-center"
+            id="pills-tab"
+            role="tablist"
+          >
+            <!-- Tab 1 -->
+            <li class="nav-item" role="presentation">
+              <button
+                class="active btn btn-dark tablinks"
+                id="pills-profile-tab-1"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile-1"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile-1"
+                aria-selected="false"
+                ng-click="setActiveTab('giaynhantao')"
+              >
+                GIÀY SÂN CỎ NHÂN TẠO
+              </button>
+            </li>
+            <!-- Tab 2 -->
+            <li class="nav-item" role="presentation">
+              <button
+                class="btn btn-dark tablinks"
+                id="pills-profile-tab-2"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile-2"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile-2"
+                aria-selected="false"
+                ng-click="setActiveTab('giaycothat')"
+              >
+                GIÀY SÂN CỎ TỰ NHIÊN
+              </button>
+            </li>
+            <!-- Tab 3 -->
+            <li class="nav-item" role="presentation">
+              <button
+                class="btn btn-dark tablinks"
+                id="pills-profile-tab-3"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile-3"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile-3"
+                aria-selected="false"
+                ng-click="setActiveTab('giayfutsal')"
+              >
+                GIÀY SÂN FUTSAL
+              </button>
+            </li>
+            <!-- Tab 4 -->
+            <li class="nav-item" role="presentation">
+              <button
+                class="btn btn-dark tablinks"
+                id="pills-profile-tab-4"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile-4"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile-4"
+                aria-selected="false"
+                ng-click="setActiveTab('phukien')"
+              >
+                PHỤ KIỆN
+              </button>
+            </li>
+            <!-- Add more tabs as needed -->
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <!-- Tab 1 Content -->
+            <div
+              class="tab-pane fade show active"
+              id="pills-profile-1"
+              role="tabpanel"
+              aria-labelledby="pills-profile-tab-1"
+              ng-controller="giaynhantaoController"
+            >
+              <div class="row">
+                <div class="col-sm-3 sport-prod" ng-repeat="nt in nhantao">
+                  <div class="card">
+                    <div class="card-body">
+                      <a ng-href="{{nt.link}}"
+                        ><img ng-src="{{nt.img_shoe}}" alt=""
+                      /></a>
+                    </div>
+                    <div class="card-footer">
+                      <a ng-href="{{nt.link}}"
+                        ><h6 class="card-title text-start">
+                          {{nt.name_shoe}}
+                        </h6></a
+                      >
+                      <div class="price-list text-start">{{nt.price_shoe}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2 Content -->
+            <div
+              class="tab-pane fade"
+              id="pills-profile-2"
+              role="tabpanel"
+              aria-labelledby="pills-profile-tab-2"
+              ng-controller="giaycothatController"
+            >
+              <div class="row">
+                <div class="col-sm-3 sport-prod" ng-repeat="ct in cothat">
+                  <div class="card">
+                    <div class="card-body">
+                      <a ng-href="{{ct.link}}"
+                        ><img ng-src="{{ct.img_shoe}}" alt=""
+                      /></a>
+                    </div>
+                    <div class="card-footer">
+                      <a ng-href="{{ct.link}}">
+                        <h6 class="card-title text-start">
+                          {{ct.name_shoe}}
+                        </h6></a
+                      >
+                      <div class="price-list text-start">{{ct.price_shoe}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Tab 3 Content -->
+            <div
+              class="tab-pane fade"
+              id="pills-profile-3"
+              role="tabpanel"
+              aria-labelledby="pills-profile-tab-3"
+              ng-controller="giayfutsalController"
+            >
+              <div class="row">
+                <div class="col-sm-3 sport-prod" ng-repeat="fs in futsal">
+                  <div class="card">
+                    <div class="card-body">
+                      <a ng-href="{{fs.link}}"
+                        ><img ng-src="{{fs.img_shoe}}" alt=""
+                      /></a>
+                    </div>
+                    <div class="card-footer">
+                      <a ng-href="{{fs.link}}">
+                        <h6 class="card-title text-start">
+                          {{fs.name_shoe}}
+                        </h6></a
+                      >
+                      <div class="price-list text-start">{{fs.price_shoe}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Tab 4 Content -->
+            <div
+              class="tab-pane fade"
+              id="pills-profile-4"
+              role="tabpanel"
+              aria-labelledby="pills-profile-tab-4"
+              ng-controller="phukienController"
+            >
+              <div class="row">
+                <div class="col-sm-3 sport-prod" ng-repeat="pk in phukien">
+                  <div class="card">
+                    <div class="card-body">
+                      <a ng-href="{{pk.link}}">
+                        <img ng-src="{{pk.img_ao}}" alt=""
+                      /></a>
+                    </div>
+                    <div class="card-footer">
+                      <a ng-href="{{nt.link}}"
+                        ><h6 class="card-title text-start">
+                          {{pk.name_ao}}
+                        </h6></a
+                      >
+                      <div class="price-list text-start">{{pk.price_ao}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Add more tab content divs as needed -->
+          </div>
+        </div>
+      </section>
+      <section class="container-fluid alert-dark" id="home-videos">
+        <h2 class="section-title text-center alert-dark">ẢNH - ALBUM</h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-4">
+                  <a href=""><img src="img/all-nike.png" alt="" /></a>
+                </div>
+                <div class="col-sm-4">
+                  <a href=""><img src="img/all-nikeandadidas.webp" alt="" /></a>
+                </div>
+                <div class="col-sm-4">
+                  <a href=""><img src="img/all-blue.png" alt="" /></a>
+                </div>
+                <div class="col-sm-4">
+                  <a href=""><img src="img/all-blue.png" alt="" /></a>
+                </div>
+                <div class="col-sm-4">
+                  <a href=""><img src="img/all-nikeandadidas.webp" alt="" /></a>
+                </div>
+                <div class="col-sm-4">
+                  <a href=""><img src="img/all-nike.png" alt="" /></a>
+                </div>
+              </div>
+            </div>
+
+            <iframe
+              class="col-sm-6"
+              style="margin-top: 18px"
+              width="600"
+              height="405"
+              src="https://www.youtube.com/embed/DWYv_rcblDU"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+      <section class="container-fluid bg-dark text-light" id="home-news">
+        <h2 class="section-title text-center alert-dark">TIN TỨC NỔI BẬT</h2>
+        <div class="container">
+          <div class="row row-cols-1 row-cols-md-3 g-4 news-information">
+            <div class="col">
+              <div class="card">
+                <a href=""
+                  ><img src="img/infor-copa.webp" class="card-img-top" alt=""
+                /></a>
+                <div class="card-body">
+                  <a href=""
+                    ><h5 class="card-title">
+                      REVIEW TỔNG HỢP VỀ DÒNG ADIDAS COPA
+                    </h5></a
+                  >
+                </div>
+                <div class="card-footer">
+                  <span><i class="bi bi-calendar-event"></i> 16/04/20</span>
+                  <span><i class="bi bi-person-fill"></i> TINISPORT</span>
+                  <span> <i class="bi bi-chat-dots-fill"></i> 0</span>
+                  <br />
+                  <span>
+                    Không thể phủ nhận rằng Copa là một trong số những đôi giày
+                    sáng tạo và nổi bật nhất của Adidas trong những năm gần đây.
+                    Nếu như Predator thiên về kiể...
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <a href=""
+                  ><img
+                    src="img/infor-nikeluna.webp"
+                    class="card-img-top"
+                    alt=""
+                /></a>
+                <div class="card-body">
+                  <a href=""
+                    ><h5 class="card-title">
+                      REVIEW TỔNG HỢP VỀ DÒNG NIKE LUNAR GATO II
+                    </h5></a
+                  >
+                </div>
+                <div class="card-footer">
+                  <span><i class="bi bi-calendar-event"></i> 16/04/20</span>
+                  <span><i class="bi bi-person-fill"></i> TINISPORT</span>
+                  <span> <i class="bi bi-chat-dots-fill"></i> 0</span>
+                  <br />
+                  <span>
+                    Được thiết kế dành cho không gian nhỏ, dù là một trận đấu
+                    trong nhà, trên một sân hẹp, trên đường phố gỗ hoặc bất cứ
+                    nơi đâu thì Lunar Gato II đều mang tín...
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <a href=""
+                  ><img src="img/info-nike.jpg" class="card-img-top" alt=""
+                /></a>
+                <div class="card-body">
+                  <a href=""
+                    ><h5 class="card-title">
+                      LỊCH SỬ PHÁT TRIỂN DÒNG GIÀY NIKE MERCURIAL
+                    </h5></a
+                  >
+                </div>
+                <div class="card-footer">
+                  <span><i class="bi bi-calendar-event"></i> 16/04/20</span>
+                  <span><i class="bi bi-person-fill"></i> TINISPORT</span>
+                  <span> <i class="bi bi-chat-dots-fill"></i> 0</span>
+                  <br />
+                  <span>
+                    Nike Mercurial là một dòng giày nổi bật xuyên suốt không
+                    gian và thời gian qua. Một loạt các cầu thủ tiền đạo chuyên
+                    nghiệp cần nhanh và tốc độ...
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="container-fluid py-4">
+        <div class="container">
+          <div class="row footer-inner">
+            <div class="col-sm-4">
+              <div class="card bg-black text-white">
+                <div class="card-header">
+                  <h4><a href="#">TINISPORT</a></h4>
+                </div>
+                <div class="card-body">
+                  <span>Cù Bị, Châu Đức, Bà Rịa - Vũng Tàu</span>
+                  <br />
+                  <span>Facebook: <a href="https://www.facebook.com/vugiang.tran.16"> Nhấn vào đây</a></span> 
+                  <br>
+                  <span
+                    >Số điện thoại:
+                    <a href="" id="copyLink1">0123456789</a></span
+                  >
+                  <br />
+                  <span
+                    >Địa chỉ gmail:
+                    <a href="" id="copyLink2">giang@gmail.com</a></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card bg-black text-white">
+                <div class="card-header">
+                  <h4><a href="#">LIÊN KẾT NHANH</a></h4>
+                </div>
+                <div class="card-body">
+                  <span><a href="">Nike</a></span> <br />
+                  <span><a href="">ADIDAS</a></span> <br />
+                  <span><a href="">PUMA</a></span> <br />
+                  <span><a href="">MIZUNO</a></span> <br />
+                  <span><a href="">Các loại đế</a></span> <br />
+                  <span><a href="">Áo bóng đá</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card bg-black text-white">
+                <div class="card-header">
+                  <h4><a href="#">ASSIGNMENT</a></h4>
+                </div>
+                <div class="card-body">
+                  <span>WEB BÁN ĐỒ ĐÁ BÓNG</span><br />
+                  <span>MÔN: FRONT-END FRAMEWORKS</span><br />
+                  <span>LỚP: SD18317</span><br />
+                  <span>GIẢNG VIÊN: HUA D TRANG</span><br />
+                  <span>HỌ VÀ TÊN: TRẦN VŨ GIANG</span><br />
+                  <span>MSSV: PS33213</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/list-index.js"></script>
+  </body>
+</html>

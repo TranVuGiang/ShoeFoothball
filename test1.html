@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoeapp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test.chitiet</title>
+    <link
+      rel="stylesheet"
+      href="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/list-data-1.css" />
+    <link
+      rel="stylesheet"
+      href="bootstrap-icons-1.11.2/font/bootstrap-icons.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* 100% chiều cao của viewport */
+      }
+
+      .container-fluid {
+        flex: 1; /* Giãn container để nó chiếm phần còn lại của trang */
+      }
+
+      footer {
+        margin-top: 30px; /* Đặt footer ở cuối cùng của trang */
+      }
+      #header-container {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: transparent; /* Màu nền ban đầu của header */
+        transition: background-color 0.3s;
+      }
+
+      #mainNav {
+        background-color: transparent !important; /* Background trong suốt cho navbar */
+      }
+
+      #mainNav.scrolled {
+        background-color: #000 !important; /* Màu đậm hơn bạn muốn */
+      }
+      .img-header {
+        position: relative;
+        height: 40vh;
+        overflow: hidden;
+      }
+
+      .img-header img {
+        width: 100%;
+        height: auto;
+      }
+
+      .img-header h2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        font-size: 2em; /* Kích thước phù hợp với thiết kế của bạn */
+      }
+      .thongtinchitiet .col-sm-8 .tab-content {
+        border: 0.5px solid rgb(22, 21, 21);
+      }
+      .thongtinchitiet .col-sm-3 .card {
+        border: 0.5px solid rgb(22, 21, 21);
+      }
+      .thongtinchitiet .col-sm-8 ul {
+        border: 0.5px solid rgb(22, 21, 21);
+        background-color: rgb(22, 21, 21);
+      }
+      .thongtinchitiet button {
+        color: white;
+      }
+      .thongtinchitiet button:hover {
+        color: white;
+      }
+      .img-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+
+  <body ng-controller="mainController">
+    <div class="container-fluid">
+      <!-- Header -->
+      <div class="container-fluid">
+        <div class="row">
+          <div
+            class="col-12 img-header d-flex align-items-center justify-content-center"
+          >
+            <div class="border-0 position-relative bg-tieude">
+              <img src="img/bong-worldcup2.jpg" class="img-fluid" alt="..." />
+              <div class="img-overlay"></div>
+              <h2
+                class="text-center mt-2 mt-sm-4 mb-4 mb-sm-0"
+                style="color: rgb(255, 255, 255); z-index: 1"
+              >
+                GIÀY ĐÁ BÓNG BITI'S HUNTER
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section style="position: relative">
+        <header>
+          <nav
+            class="navbar navbar-expand-lg navbar-dark fixed-top navbar-fixed"
+          >
+            <div class="container-fluid">
+              <a href="index.html" class="navbar-brand font-logo">TINISPORT</a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex mx-auto" role="search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="index.html"
+                    >
+                      <i class="bi bi-house-fill"></i> Trang chủ</a
+                    >
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Giày đá bóng
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="list-data-1.html"
+                          >Đế sân cỏ nhân tạo</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Đế sân cỏ thật</a>
+                      </li>
+                      <li><hr class="dropdown-divider" /></li>
+                      <li>
+                        <a class="dropdown-item" href="#">NIKE</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Phụ kiện đá bóng
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                      </li>
+                      <li><hr class="dropdown-divider" /></li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Something else here</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">
+                      <i class="bi bi-newspaper"></i> Tin tức</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="dangnhap.html"
+                    >
+                      <i class="bi bi-person-fill"></i> Tài khoản</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="giohang.html"
+                    >
+                      <i class="bi bi-cart-fill"></i> Giỏ hàng</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <script>
+          $(document).ready(function () {
+            var navbar = $(".navbar-fixed");
+
+            $(window).scroll(function () {
+              var scroll = $(window).scrollTop();
+              if (scroll > 50) {
+                navbar.addClass("scrolled");
+              } else {
+                navbar.removeClass("scrolled");
+              }
+            });
+          });
+        </script>
+      </section>
+      <section class="container-fluid information">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-7 col-md-12">
+              <img
+                ng-src="{{nt.img_shoe}}"
+                class="w-100"
+                height="500px"
+                alt="Sản phẩm"
+              />
+            </div>
+            <div class="col-lg-4 col-md-12 text-start chitiet mt-3">
+              <h4><b>{{nt.name_shoe}}</b></h4>
+              <span
+                ><p>Thương hiệu: Nike | Loại: Giày sân cỏ tự nhiên |</p></span
+              >
+              <hr />
+              <h3 style="color: red">{{nt.price_shoe}}</h3>
+              <h4><del>720,000đ</del> (Tiết kiệm được 220,000đ)</h4>
+              <hr />
+              <hr />
+              <span><p>Kích thước</p></span>
+              <button class="btn btn-outline-secondary">37</button>
+              <button class="btn btn-outline-secondary">38</button>
+              <button class="btn btn-outline-secondary">39</button>
+              <button class="btn btn-outline-secondary">40</button>
+              <button class="btn btn-outline-secondary">41</button>
+              <button class="btn btn-outline-secondary">42</button>
+              <hr />
+              <label for="quantityInput" class="form-label">Số Lượng:</label>
+              <div class="input-group input-group-sm">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="decrementBtn"
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  class="form-control input-soluong"
+                  id="quantityInput"
+                  value="1"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="incrementBtn"
+                >
+                  +
+                </button>
+              </div>
+              <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                  var decrementBtn = document.getElementById("decrementBtn");
+                  var incrementBtn = document.getElementById("incrementBtn");
+                  var quantityInput = document.getElementById("quantityInput");
+
+                  decrementBtn.addEventListener("click", function () {
+                    var currentValue = parseInt(quantityInput.value, 10);
+                    if (!isNaN(currentValue) && currentValue > 1) {
+                      quantityInput.value = currentValue - 1;
+                    }
+                  });
+
+                  incrementBtn.addEventListener("click", function () {
+                    var currentValue = parseInt(quantityInput.value, 10);
+                    if (!isNaN(currentValue)) {
+                      quantityInput.value = currentValue + 1;
+                    }
+                  });
+                });
+              </script>
+              <hr />
+              <button
+                class="btn btn-dark"
+                style="background-color: black; font-size: 25px"
+              >
+                THÊM VÀO GIỎ
+              </button>
+              <button
+                class="btn btn-dark"
+                style="background-color: black; font-size: 25px"
+              >
+                MUA NGAY
+              </button>
+            </div>
+          </div>
+          <script>
+            var app = angular.module("shoeapp", []);
+          
+            app.controller("mainController", function ($scope) {
+              // Sửa đoạn này: lấy thông tin từ sessionStorage
+              $scope.nt = {};
+              $scope.nt.link = sessionStorage.getItem("img_shoe");
+              $scope.nt.name_shoe = sessionStorage.getItem("name_shoe");
+              $scope.nt.price_shoe = sessionStorage.getItem("price_shoe");
+              
+              // Console log để kiểm tra
+              console.log($scope.nt);
+            });
+          </script>
+          
+        </div>
+      </section>
+      <section class="container-fluid">
+        <div class="container thongtinchitiet">
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-8">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active text-wh"
+                    id="home-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#home-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="home-tab-pane"
+                    aria-selected="true"
+                  >
+                    CHI TIẾT SẢN PHẤM
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="profile-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#profile-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile-tab-pane"
+                    aria-selected="false"
+                  >
+                    QUÀ TẶNG BẢO HÀNH
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="contact-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#contact-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="contact-tab-pane"
+                    aria-selected="false"
+                  >
+                    HƯỚNG DẪN CHỌN GIÀY
+                  </button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="home-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  tabindex="0"
+                >
+                  <span>
+                    <p class="text-white mt-5 m-lg-3">
+                      Giày bóng đá Biti's Hunter lưỡi gà thun đế TF là dòng giày
+                      được thiết kế để hỗ trợ việc tăng cường tốc độ. Tốc độ
+                      trong bóng đá không chỉ là số đo theo đường thẳng, bạn
+                      phải nhanh chóng với mọi hướng trên sân. Biti's Hunter
+                      được tích hợp nhiều cải tiến để đưa tốc độ lên một cấp độ
+                      hoàn toàn mới. <br />
+                      <br />
+                      Giày đủ size, đặc biệt có giày size lớn - từ 39 đến 45
+                      (BIG SIZE)
+                    </p>
+                    <div class="text-center">
+                      <img
+                        src="img/wika-futsal.webp"
+                        class="w-75 p-1 mb-4"
+                        height="500px"
+                        alt="Sản phẩm"
+                      />
+                    </div>
+                  </span>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="profile-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                  tabindex="0"
+                >
+                  <span class="text-white">
+                    <p class="text-white mt-5 m-lg-3">
+                      <b>BẢO HÀNH KHÂU FULL ĐẾ 1 NĂM:</b> GiangSport bảo hành
+                      keo giày đối với những giày được mua tại shop (trừ giày
+                      sale, giày khuyến mãi) bằng cách khâu full đế. <br />
+                      <br />
+
+                      Không nên khâu sẵn đế khi chưa đá với lý do sau: lúc mới
+                      keo còn chắn, nếu khâu luôn sẽ làm phá hỏng lớp keo và
+                      giày thêm chật → khâu không có tác dụng. Đá một thời gian,
+                      giày dãn và keo bong → đây là thời điểm khâu giày thích
+                      hợp nhất. <br />
+                      <br />
+
+                      <b>QUÀ TẶNG HẤP DẪN:</b> <br />
+                      <br />
+
+                      Tặng kèm một bộ đồ đá banh hoặc túi rút hoặc vớ hoặc băng
+                      keo (tất cả đều là loại tốt ♥) FREE SHIP đối với những đơn
+                      hàng trên 500k trong nội thành TP.HCM hoặc trên 1 triệu
+                      đối với các tỉnh ngoại thành (Đối với những đơn hàng là
+                      giày, ngoại trừ những trường hợp sale, giảm giá) <br />
+                      <br />
+
+                      <b>SHIP COD TOÀN QUỐC</b> - Nhận hàng, xem hàng và thanh
+                      toán khi hài lòng với chi phí cực thấp. Nội thành HCM -
+                      20k/ lần và Các tỉnh khác trên toàn quốc - 33k/ lần.
+                    </p>
+                  </span>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="contact-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="contact-tab"
+                  tabindex="0"
+                >
+                  <span class="text-white">
+                    <p class="text-white mt-5 m-lg-3">
+                      <b
+                        >NÊN CHỌN GIÀY ÔM KHÍT CHÂN, KHÔNG NÊN CHỌN ĐÔI QUÁ
+                        THOẢI MÁI</b
+                      >
+                      <br />
+                      <br />
+
+                      Giày bóng đá thường yêu cầu cao về độ ôm chân, có như vậy
+                      mới giúp cảm giác bóng tốt, tăng lực sút và chắc chân. Vì
+                      vậy nên chọn đôi vừa khít, tránh những đôi khi xỏ chân lần
+                      đầu tiên mà cảm giác quá thoải mái. <br />
+                      <br />
+
+                      Đối với những bạn chân bè, sai lầm khi chọn giày có cảm
+                      giác thoải mái dẫn đến việc dư mũi quá nhiều → không hiệu
+                      quả khi thi đấu. Tip: Nếu bạn mang giày mà vẫn cảm thấy
+                      tức ở hai bên bàn chân thì nên tháo lót giày ra và thi đấu
+                      khoảng 2 – 3 trận. Trong quá trình chơi bóng, da sẽ mềm ra
+                      rất nhanh và tạo form giày thích hợp với bàn chân của bạn.
+                      Lúc này giày đã đủ mềm và giãn ra, bạn hãy cho lót giày
+                      vào và chơi bóng bình thường nhé. <br />
+                      <br />
+
+                      <b>NÊN CHỌN GIÀY CÓ ĐỘ MỀM TƯƠNG ĐỐI, DỄ NẮN BÓP</b>
+                      <br />
+                      <br />
+
+                      Giày da sân cỏ nhân tạo thường cần thời gian để da có thể
+                      mềm hơn. Chơi bóng với cường độ cao thường làm da giày mềm
+                      ra rất nhanh. Khi chọn mua giày mới, bạn chỉ cần chọn loại
+                      có da giày mềm tương đối, dễ nắn bóp là được. <br />
+                      <br />
+
+                      Đừng lo ngại da giày cứng sẽ làm bạn đau chân. <br />
+                      <br />
+
+                      <b>NÊN CHỌN GIÀY ĐINH PHÙ HỢP VỚI SÂN NHÂN TẠO</b> <br />
+                      <br />
+
+                      Để có thể chơi bóng một cách tốt nhất trên sân cỏ nhân
+                      tạo, bạn nên lựa chọn loại đinh dăm TF. Tuy nhiên, tùy vào
+                      từng điều kiện mặt sân và thời tiết khác nhau mà có thể
+                      chọn loại đinh dăm MG, đinh tán AG hay đế IC của giày
+                      Futsal. <br />
+                      <br />
+
+                      Bề mặt sân cỏ cùn trơ, cỏ cao su nhân tạo và trời không
+                      mưa, bạn có thể sử dụng đôi giày Futsal đế IC à giúp bạn
+                      có thể chạy nhanh, tăng tốc. Bề mặt sân cỏ đẹp, còn mới và
+                      cỏ cao, bạn có thể sử dụng các giày với đinh MG, AG hay
+                      HG.
+                    </p>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card text-center">
+                <div class="card-header bg-black text-white">
+                  <h5><b>SẢN PHẨM LIÊN QUAN</b></h5>
+                </div>
+                <div class="card-body bg-dark">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a href="#"
+                        ><img class="w-75" src="img/wika-futsal.webp" alt=""
+                      /></a>
+                    </div>
+                    <div class="col-sm-7 text-start">
+                      <a href="#">
+                        <b>Giày sân cỏ nhân tạo Biti's Hunter - Đỏ</b></a
+                      >
+                      <span style="color: red"><p>620.000đ</p></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a href="#"
+                        ><img class="w-75" src="img/nikeair-fg.webp" alt=""
+                      /></a>
+                    </div>
+                    <div class="col-sm-7 text-start">
+                      <a href="#"> <b>Giày sân cỏ nhân tạo Nike AirZoom</b></a>
+                      <span style="color: red"><p>920.000đ</p></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a href="#"
+                        ><img class="w-75" src="img/nikevapor-tf.jpg" alt=""
+                      /></a>
+                    </div>
+                    <div class="col-sm-7 text-start">
+                      <a href="#"> <b>Giày sân cỏ nhân tạo Nike Vappr VI</b></a>
+                      <span style="color: red"><p>620.000đ</p></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a href="#"
+                        ><img class="w-75" src="img/puma2-tf.jpg" alt=""
+                      /></a>
+                    </div>
+                    <div class="col-sm-7 text-start">
+                      <a href="#"> <b>Giày sân cỏ nhân tạo Puma Future</b></a>
+                      <span style="color: red"><p>620.000đ</p></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a href="#"
+                        ><img class="w-75" src="img/nikevapor2-tf.jpg" alt=""
+                      /></a>
+                    </div>
+                    <div class="col-sm-7 text-start">
+                      <a href="#"> <b>Giày sân cỏ nhân tạo Nike Vappr VI</b></a>
+                      <span style="color: red"><p>620.000đ</p></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a href="#"
+                        ><img class="w-75" src="img/puma-tf.jpg" alt=""
+                      /></a>
+                    </div>
+                    <div class="col-sm-7 text-start">
+                      <a href="#"> <b>Giày sân cỏ nhân tạo Puma Future</b></a>
+                      <span style="color: red"><p>620.000đ</p></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a href="#"
+                        ><img class="w-75" src="img/nikephantom-fg.webp" alt=""
+                      /></a>
+                    </div>
+                    <div class="col-sm-7 text-start">
+                      <a href="#">
+                        <b>Giày sân cỏ nhân tạo Nike Phantom GX</b></a
+                      >
+                      <span style="color: red"><p>620.000đ</p></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="container-fluid py-4">
+        <div class="container">
+          <div class="row footer-inner">
+            <div class="col-sm-4">
+              <div class="card bg-black text-white">
+                <div class="card-header">
+                  <h4><a href="#">TINISPORT</a></h4>
+                </div>
+                <div class="card-body">
+                  <span>Cù Bị, Châu Đức, Bà Rịa - Vũng Tàu</span>
+                  <br />
+                  <span
+                    >Số điện thoại:
+                    <a href="" id="copyLink1">0123456789</a></span
+                  >
+                  <br />
+                  <span
+                    >Địa chỉ gmail:
+                    <a href="" id="copyLink2">giang@gmail.com</a></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card bg-black text-white">
+                <div class="card-header">
+                  <h4><a href="#">LIÊN KẾT NHANH</a></h4>
+                </div>
+                <div class="card-body">
+                  <span><a href="">Nike</a></span> <br />
+                  <span><a href="">ADIDAS</a></span> <br />
+                  <span><a href="">PUMA</a></span> <br />
+                  <span><a href="">MIZUNO</a></span> <br />
+                  <span><a href="">Các loại đế</a></span> <br />
+                  <span><a href="">Áo bóng đá</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card bg-black text-white">
+                <div class="card-header">
+                  <h4><a href="#">ASSIGNMENT</a></h4>
+                </div>
+                <div class="card-body">
+                  <span>WEB BÁN ĐỒ ĐÁ BÓNG</span><br />
+                  <span>MÔN: FRONT-END FRAMEWORKS</span><br />
+                  <span>LỚP: SD18317</span><br />
+                  <span>GIẢNG VIÊN: HUA D TRANG</span><br />
+                  <span>HỌ VÀ TÊN: TRẦN VŨ GIANG</span><br />
+                  <span>MSSV: PS33213</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

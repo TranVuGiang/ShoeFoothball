@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoeapp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ hàng</title>
+    <link
+      rel="stylesheet"
+      href="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/list-data-1.css" />
+    <link
+      rel="stylesheet"
+      href="bootstrap-icons-1.11.2/font/bootstrap-icons.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .container-fluid {
+        flex: 1;
+      }
+
+      footer {
+        margin-top: 30px;
+      }
+      #header-container {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: transparent;
+        transition: background-color 0.3s;
+      }
+
+      #mainNav {
+        background-color: transparent !important;
+      }
+
+      #mainNav.scrolled {
+        background-color: #000 !important;
+      }
+      .img-header {
+        position: relative;
+        height: 40vh;
+        overflow: hidden;
+      }
+
+      .img-header img {
+        width: 100%;
+        height: auto;
+      }
+
+      .img-header h2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        font-size: 2em;
+      }
+      .thongtinchitiet .col-sm-8 .tab-content {
+        border: 0.5px solid white;
+      }
+      .thongtinchitiet .col-sm-8 ul {
+        border: 0.5px solid white;
+        background-color: black;
+      }
+      .thongtinchitiet button {
+        color: white;
+      }
+      .thongtinchitiet button:hover {
+        color: white;
+      }
+      .img-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      textarea {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: #1b1e20;
+        color: white;
+        border: 1px solid #555;
+        border-radius: 5px;
+        resize: vertical;
+        transition: border-color 0.3s ease-in-out;
+      }
+
+      textarea:hover {
+        border-color: #777;
+      }
+      textarea:focus {
+        border-color: #777;
+        outline: none;
+      }
+      @media only screen and (max-width: 767px) {
+        .hr-title, .hr-header, .hr-footer{
+            display: none;
+        }
+        .row-details {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body ng-controller="mainController">
+    <div class="container-fluid">
+      <!-- Header -->
+      <div class="container-fluid">
+        <div class="row">
+          <div
+            class="col-12 img-header d-flex align-items-center justify-content-center"
+          >
+            <div class="border-0 position-relative bg-tieude">
+              <img src="img/bong-worldcup2.jpg" class="img-fluid" alt="..." />
+              <div class="img-overlay"></div>
+              <h2
+                class="text-center mt-2 mt-sm-4 mb-4 mb-sm-0"
+                style="color: rgb(255, 255, 255); z-index: 1"
+              >
+                GIỎ HÀNG CỦA BẠN
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section style="position: relative">
+        <header>
+          <nav
+            class="navbar navbar-expand-lg navbar-dark fixed-top navbar-fixed"
+          >
+            <div class="container-fluid">
+              <a href="index.html" class="navbar-brand font-logo">TINISPORT</a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex mx-auto" role="search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="index.html"
+                    >
+                      <i class="bi bi-house-fill"></i> Trang chủ</a
+                    >
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Giày đá bóng
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="list-data-1.html"
+                          >Đế sân cỏ nhân tạo</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Đế sân cỏ thật</a>
+                      </li>
+                      <li><hr class="dropdown-divider" /></li>
+                      <li>
+                        <a class="dropdown-item" href="#">NIKE</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Phụ kiện đá bóng
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                      </li>
+                      <li><hr class="dropdown-divider" /></li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Something else here</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">
+                      <i class="bi bi-newspaper"></i> Tin tức</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="dangnhap.html"
+                    >
+                      <i class="bi bi-person-fill"></i> Tài khoản</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="giohang.html"
+                    >
+                      <i class="bi bi-cart-fill"></i> Giỏ hàng</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <script>
+          $(document).ready(function () {
+            var navbar = $(".navbar-fixed");
+
+            $(window).scroll(function () {
+              var scroll = $(window).scrollTop();
+              if (scroll > 50) {
+                navbar.addClass("scrolled");
+              } else {
+                navbar.removeClass("scrolled");
+              }
+            });
+          });
+        </script>
+      </section>
+      <section>
+        <div class="container text-white">
+          <div class="text-white">
+            <h3><b>GIỎ HÀNG</b></h3>
+            <hr />
+            <hr class="hr-title">
+          </div>
+          <div class="row  row-details">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+              <h5>Thông tin chi tiết sản phẩm</h5>
+            </div>
+            <div class="col-sm-2">
+              <h5>Đơn giá</h5>
+            </div>
+            <div class="col-sm-2">
+              <h5>Số lượng</h5>
+            </div>
+            <div class="col-sm-2">
+              <h5>Tổng giá</h5>
+            </div>
+          </div>
+          <hr class="hr-header">
+          <div class="row">
+            <div class="col-sm-2">
+              <a href="#"
+                ><img width="170px" src="img/puma2-tf.jpg" alt=""
+              /></a>
+            </div>
+            <div class="col-sm-4">
+              <b class="fs-4"> Giày sân cỏ nhân tạo Puma Future Speed đế TF</b>
+              <br />
+              <br />
+              <p>40 / Green</p>
+            </div>
+            <div class="col-sm-2 mt-5 hr-footer">
+              <b class="fs-4 ">420,000đ</b>
+            </div>
+            <div class="col-sm-2 mt-5">
+              <div class="input-group input-group-sm">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="decrementBtn"
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  class="form-control input-soluong bg-dark text-white border-1"
+                  id="quantityInput"
+                  value="1"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="incrementBtn"
+                >
+                  +
+                </button>
+              </div>
+              <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                  var decrementBtn = document.getElementById("decrementBtn");
+                  var incrementBtn = document.getElementById("incrementBtn");
+                  var quantityInput = document.getElementById("quantityInput");
+
+                  decrementBtn.addEventListener("click", function () {
+                    var currentValue = parseInt(quantityInput.value, 10);
+                    if (!isNaN(currentValue) && currentValue > 1) {
+                      quantityInput.value = currentValue - 1;
+                    }
+                  });
+
+                  incrementBtn.addEventListener("click", function () {
+                    var currentValue = parseInt(quantityInput.value, 10);
+                    if (!isNaN(currentValue)) {
+                      quantityInput.value = currentValue + 1;
+                    }
+                  });
+                });
+              </script>
+            </div>
+            <div class="col-sm-2 mt-5">
+              <b class="fs-4">420,000đ</b>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-2">
+              <a href="#"
+                ><img width="170px" src="img/puma2-tf.jpg" alt=""
+              /></a>
+            </div>
+            <div class="col-sm-4">
+              <b class="fs-4"> Giày sân cỏ nhân tạo Puma Future Speed đế TF</b>
+              <br />
+              <br />
+              <p>40 / Green</p>
+            </div>
+            <div class="col-sm-2 mt-5 hr-footer">
+              <b class="fs-4 ">420,000đ</b>
+            </div>
+            <div class="col-sm-2 mt-5">
+              <div class="input-group input-group-sm">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="decrementBtn"
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  class="form-control input-soluong bg-dark text-white border-1"
+                  id="quantityInput"
+                  value="1"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="incrementBtn"
+                >
+                  +
+                </button>
+              </div>
+              <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                  var decrementBtn = document.getElementById("decrementBtn");
+                  var incrementBtn = document.getElementById("incrementBtn");
+                  var quantityInput = document.getElementById("quantityInput");
+
+                  decrementBtn.addEventListener("click", function () {
+                    var currentValue = parseInt(quantityInput.value, 10);
+                    if (!isNaN(currentValue) && currentValue > 1) {
+                      quantityInput.value = currentValue - 1;
+                    }
+                  });
+
+                  incrementBtn.addEventListener("click", function () {
+                    var currentValue = parseInt(quantityInput.value, 10);
+                    if (!isNaN(currentValue)) {
+                      quantityInput.value = currentValue + 1;
+                    }
+                  });
+                });
+              </script>
+            </div>
+            <div class="col-sm-2 mt-5">
+              <b class="fs-4">420,000đ</b>
+            </div>
+          </div>
+          <hr >
+          <div class="row">
+            <div class="col-sm-9">
+              <label class="fs-5 mb-3">Chú thích cho cửa hàng</label> <br />
+              <textarea cols="100" rows="8"></textarea>
+            </div>
+            <div class="col-sm-3">
+              <div class="text-end">
+                <span class="fs-5">Tổng tiền </span>
+                <span class="fs-4 m-lg-3"><b>410,000đ</b></span>
+              </div>
+              <div class="text-end mt-4">
+                <button
+                  class="btn btn-dark"
+                  style="background-color: black; font-size: 15px"
+                >
+                  <b>CẬP NHẬT</b>
+                </button>
+                <button
+                  class="btn btn-dark"
+                  style="background-color: black; font-size: 15px"
+                >
+                  <b>THANH TOÁN</b>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="container-fluid py-4">
+        <div class="container">
+          <div class="row footer-inner">
+            <div class="col-sm-4">
+              <div class="card bg-black text-white">
+                <div class="card-header">
+                  <h4><a href="#">TINISPORT</a></h4>
+                </div>
+                <div class="card-body">
+                  <span>Cù Bị, Châu Đức, Bà Rịa - Vũng Tàu</span>
+                  <br />
+                  <span
+                    >Số điện thoại:
+                    <a href="" id="copyLink1">0123456789</a></span
+                  >
+                  <br />
+                  <span
+                    >Địa chỉ gmail:
+                    <a href="" id="copyLink2">giang@gmail.com</a></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card bg-black text-white">
+                <div class="card-header">
+                  <h4><a href="#">LIÊN KẾT NHANH</a></h4>
+                </div>
+                <div class="card-body">
+                  <span><a href="">Nike</a></span> <br />
+                  <span><a href="">ADIDAS</a></span> <br />
+                  <span><a href="">PUMA</a></span> <br />
+                  <span><a href="">MIZUNO</a></span> <br />
+                  <span><a href="">Các loại đế</a></span> <br />
+                  <span><a href="">Áo bóng đá</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card bg-black text-white">
+                <div class="card-header">
+                  <h4><a href="#">ASSIGNMENT</a></h4>
+                </div>
+                <div class="card-body">
+                  <span>WEB BÁN ĐỒ ĐÁ BÓNG</span><br />
+                  <span>MÔN: FRONT-END FRAMEWORKS</span><br />
+                  <span>LỚP: SD18317</span><br />
+                  <span>GIẢNG VIÊN: HUA D TRANG</span><br />
+                  <span>HỌ VÀ TÊN: TRẦN VŨ GIANG</span><br />
+                  <span>MSSV: PS33213</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/list-index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quên mật khẩu</title>
+    <link
+      rel="stylesheet"
+      href="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="css/forgotpass.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="bootstrap-icons-1.11.2/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <header class="">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand font-logo">TINISPORT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a href="index.html" class="nav-link active" aria-current="page" >
+                        <i class="bi bi-house-fill"></i> Trang chủ</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Giày đá bóng
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Phụ kiện đá bóng
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">
+                    <i class="bi bi-newspaper"></i> Tin tức</a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="dangnhap.html">
+                    <i class="bi bi-person-fill"></i> Tài khoản</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">
+                  <i class="bi bi-cart-fill"></i> Giỏ hàng</a>
+            </li>
+              </ul>
+          </div>
+        </div>
+    </nav>
+    </header>
+    <div class="wrapper">
+      <form id="forgotPass">
+        <h1>Quên mật khẩu</h1>
+        <div class="input-box error">
+          <input
+            type="text"
+            placeholder="Nhập số điện thoại hoặc email"
+            id="email-or-phoneNumber"
+          />
+          <i class="bx bxs-envelope" class="email-icon"></i>
+          <small></small>
+        </div>
+        <div class="input-box error">
+          <div class="ID-send">
+            <input
+              type="text"
+              placeholder="Nhập mã xác nhận"
+              class="input-send"
+              id="input-sendID"
+            />
+            <button type="submit" class="btn">Gửi mã</button>
+          </div>
+        </div>
+        <button type="submit" class="btn1" onclick="CreateNewPass()">
+          Xác nhận
+        </button>
+      </form>
+    </div>
+    <script src="js/quenmatkhau.js"></script>
+  </body>
+</html>
